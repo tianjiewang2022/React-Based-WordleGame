@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/App.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1699995913622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699996032409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n \n .navigation-button {\n     padding: 10px 20px;\n     font-size: 1em;\n-    background-color: #3498db;\n+    background-color: #5ecce8;\n     color: #fff;\n     border: none;\n     border-radius: 5px;\n     cursor: pointer;\n"
+                },
+                {
+                    "date": 1699996218322,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,9 @@\n     border: none;\n     border-radius: 5px;\n     cursor: pointer;\n     transition: background-color 0.3s ease-in-out;\n+    position: relative;\n }\n \n .navigation-button:hover {\n     background-color: #2980b9;\n"
+                }
+            ],
+            "date": 1699995913622,
+            "name": "Commit-0",
+            "content": "/* App.css */\n.app-container {\n    text-align: center;\n    margin-top: 50px;\n  }\n  \n  .app-title {\n    font-size: 2em;\n    color: #333;\n  }\n  \n  .app-description {\n    font-size: 1.2em;\n    color: #555;\n    margin-bottom: 20px;\n  }\n  \n  .button-container {\n    display: flex;\n    justify-content: center;\n  }\n  \n  .navigation-link {\n    margin: 0 10px;\n    text-decoration: none;\n  }\n  \n  .navigation-button {\n    padding: 10px 20px;\n    font-size: 1em;\n    background-color: #3498db;\n    color: #fff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    transition: background-color 0.3s ease-in-out;\n  }\n  \n  .navigation-button:hover {\n    background-color: #2980b9;\n  }\n  "
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/WordleProject/Components/Modal.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1699998933950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699999669607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,11 +23,11 @@\n                 <div className=\"flex flex-col justify-between h-full\">{children}</div>\n                 <div className=\"flex justify-end\">\n                     {actionBar}\n                 </div>\n-            </div>,\n-        </div>,\n-        document.querySelector('.modal-container')\n+            </div>\n+        </div>;\n+    document.querySelector('.modal-container')\n     );\n }\n \n export default Modal;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699999681873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,8 @@\n             document.body.classList.remove('overflow-hidden');\n         };\n     }, []);\n \n-\n-\n     return ReactDOM.createPortal(\n         <div>\n             <div\n                 onClick={onClose}\n"
+                },
+                {
+                    "date": 1699999687581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,10 +22,10 @@\n                 <div className=\"flex justify-end\">\n                     {actionBar}\n                 </div>\n             </div>\n-        </div>;\n-    document.querySelector('.modal-container')\n+        </div>\n+        document.querySelector('.modal-container')\n     );\n }\n \n export default Modal;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1700001957553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         };\n     }, []);\n \n     return ReactDOM.createPortal(\n-        <div>\n+        <>\n             <div\n                 onClick={onClose}\n                 className=\"fixed inset-0 bg-gray-300 opacity-80\"\n             ></div>,\n@@ -22,9 +22,9 @@\n                 <div className=\"flex justify-end\">\n                     {actionBar}\n                 </div>\n             </div>\n-        </div>,\n+        </>,\n         document.querySelector('.modal-container')\n     );\n }\n \n"
+                },
+                {
+                    "date": 1700003287477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,6 +26,6 @@\n         </>,\n         document.querySelector('modal-container')\n     );\n }\n-\n+ \n export default Modal;\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1699998933950,
+            "name": "Commit-0",
+            "content": "import ReactDOM from \"react-dom\";\nimport { useEffect } from \"react\";\n\nfunction Modal({ onClose, children, actionBar }) {\n\n    useEffect(() => {\n        document.body.classList.add('overflow-hidden');\n\n        return () => {\n            document.body.classList.remove('overflow-hidden');\n        };\n    }, []);\n\n\n\n    return ReactDOM.createPortal(\n        <div>\n            <div\n                onClick={onClose}\n                className=\"fixed inset-0 bg-gray-300 opacity-80\"\n            ></div>,\n            <div className=\"fixed inset-40 p-10 bg-white\">\n                <div className=\"flex flex-col justify-between h-full\">{children}</div>\n                <div className=\"flex justify-end\">\n                    {actionBar}\n                </div>\n            </div>,\n        </div>,\n        document.querySelector('.modal-container')\n    );\n}\n\nexport default Modal;"
+        }
+    ]
+}

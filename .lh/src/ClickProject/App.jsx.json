@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/ClickProject/App.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1699994875607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1699994875607,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport Cell from './Cell';\nimport { GridProvider } from './Grid';\nimport Counter from './Counter';\nimport './ClickProject.css';\n\n\nfunction App() {\n  return (\n    <GridProvider>\n      <div className=\"app\">\n        <div className=\"counter\">Counts: <Counter /></div>\n        <div className=\"grid\">\n          {/* {Array.from({ length: 2 }, (_, row) => ( */}\n          {/* <div key={row} className=\"row\">\n              {Array.from({ length: 2 }, (_, col) => (\n                <Cell key={col} row={row} col={col} />\n              ))}\n            </div> */}\n          {/* ))} */}\n          {Array.from({ length: 4 }, (_, index) => (\n            <Cell key={index} row={Math.floor(index / 2)} col={index % 2} />\n          ))}\n        </div>\n      </div>\n    </GridProvider>\n  );\n}\nexport default App;\n"
+        }
+    ]
+}

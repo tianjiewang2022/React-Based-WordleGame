@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/WordleProject/Components/game.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1700017683656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700017756179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import React, { useState, useEffect } from 'react';\n- // Import the desired icon\n+// Import the desired icon\n \n import './WordleGame.css'; // Create a separate CSS file for styling\n \n const game = ({ words, wordLength, attemptLimit }) => {\n"
+                },
+                {
+                    "date": 1700017769180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n // Import the desired icon\n \n import './WordleGame.css'; // Create a separate CSS file for styling\n \n-const game = ({ words, wordLength, attemptLimit }) => {\n+const Game = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n     const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n     const [attempts, setAttempts] = useState(0);\n@@ -105,5 +105,5 @@\n         </div>\n     );\n };\n \n-export default game;\n+export default Game;\n"
+                },
+                {
+                    "date": 1700017787705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import React, { useState, useEffect } from 'react';\n // Import the desired icon\n \n-import './WordleGame.css'; // Create a separate CSS file for styling\n+import './game.css'; // Create a separate CSS file for styling\n \n const Game = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n"
+                },
+                {
+                    "date": 1700017808352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import React, { useState, useEffect } from 'react';\n-// Import the desired icon\n+import { FaFire } from 'react-icons/fa';\n \n import './game.css'; // Create a separate CSS file for styling\n \n const Game = ({ words, wordLength, attemptLimit }) => {\n"
+                },
+                {
+                    "date": 1700017950594,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,8 +55,9 @@\n         }\n     };\n \n     return (\n+        <p>Remaining attempts: {6 - attempts}</p>\n         <div className=\"center-container\">\n             <div className=\"word-input\">\n                 {userInput.map((value, index) => (\n                     <div key={index}>\n@@ -85,9 +86,8 @@\n                         </p>\n                     </div>\n                 ) : (\n                     <>\n-                        <p>Remaining attempts: {attemptLimit - attempts}</p>\n                         <button className=\"navigation-button\" onClick={submitWord}>\n                             Submit\n                         </button>\n                         <button className=\"navigation-button\" onClick={resetGame}>\n"
+                },
+                {
+                    "date": 1700018028670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,9 +57,9 @@\n \n     return (\n \n         <div className=\"center-container\">\n-            <p>Remaining attempts: {6 - attempts}</p>\n+            <p>Remaining attempts: {attemptLimit - attempts}</p>\n             <div className=\"word-input\">\n                 {userInput.map((value, index) => (\n                     <div key={index}>\n                         <input\n"
+                },
+                {
+                    "date": 1700018541438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,14 @@\n \n     useEffect(() => {\n         resetGame();\n     }, []); // Initial reset when the component mounts\n-\n+    useEffect(() => {\n+        if (attempts > 6) {\n+            alert('Game Over! Would you like to reset the game?');\n+            resetGame();\n+        }\n+    }, [attempts]);\n     const resetGame = () => {\n         const randomIndex = Math.floor(Math.random() * words.length);\n         setSelectedWord(words[randomIndex]);\n         setUserInput(Array(wordLength).fill(''));\n"
+                }
+            ],
+            "date": 1700017683656,
+            "name": "Commit-0",
+            "content": "import React, { useState, useEffect } from 'react';\n // Import the desired icon\n\nimport './WordleGame.css'; // Create a separate CSS file for styling\n\nconst game = ({ words, wordLength, attemptLimit }) => {\n    const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n    const [selectedWord, setSelectedWord] = useState('');\n    const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n    const [attempts, setAttempts] = useState(0);\n    const [showCongratulations, setShowCongratulations] = useState(false);\n\n    useEffect(() => {\n        resetGame();\n    }, []); // Initial reset when the component mounts\n\n    const resetGame = () => {\n        const randomIndex = Math.floor(Math.random() * words.length);\n        setSelectedWord(words[randomIndex]);\n        setUserInput(Array(wordLength).fill(''));\n        setFeedback(Array(wordLength).fill(''));\n        setAttempts(0);\n        setShowCongratulations(false);\n    };\n\n    const handleInputChange = (index, value) => {\n        const newInput = [...userInput];\n        newInput[index] = value;\n        setUserInput(newInput);\n    };\n\n    const submitWord = () => {\n        const word = userInput.join('').toLowerCase();\n\n        if (word.length < wordLength) {\n            alert(`Word is too short. Please submit a ${wordLength}-letter word.`);\n            return;\n        }\n\n        const newFeedback = word.split('').map((char, index) => {\n            if (!selectedWord.includes(char)) {\n                return 'gray';\n            } else if (selectedWord[index] !== char) {\n                return 'yellow';\n            } else {\n                return 'green';\n            }\n        });\n\n        setFeedback(newFeedback);\n        setAttempts(attempts + 1);\n\n        if (word === selectedWord && attempts < attemptLimit) {\n            setShowCongratulations(true);\n        }\n    };\n\n    return (\n        <div className=\"center-container\">\n            <div className=\"word-input\">\n                {userInput.map((value, index) => (\n                    <div key={index}>\n                        <input\n                            type=\"text\"\n                            maxLength=\"1\"\n                            value={value}\n                            className={`input-block ${feedback[index]}`}\n                            onChange={(e) => handleInputChange(index, e.target.value)}\n                        />\n                    </div>\n                ))}\n            </div>\n\n            <div className=\"button-container\">\n                {showCongratulations ? (\n                    <div>\n                        <p>\n                            Congratulations! Would you like to try again?\n                            <span role=\"img\" aria-label=\"celebration\" style={{ color: 'red' }}>\n                                🎉\n                            </span>\n                            <button className=\"navigation-button\" onClick={resetGame}>\n                                Try Again\n                            </button>\n                        </p>\n                    </div>\n                ) : (\n                    <>\n                        <p>Remaining attempts: {attemptLimit - attempts}</p>\n                        <button className=\"navigation-button\" onClick={submitWord}>\n                            Submit\n                        </button>\n                        <button className=\"navigation-button\" onClick={resetGame}>\n                            Reset\n                        </button>\n                    </>\n                )}\n            </div>\n\n            {attempts >= attemptLimit && (\n                <p>\n                    Game Over! The correct answer was: <strong>{selectedWord}</strong>\n                </p>\n            )}\n        </div>\n    );\n};\n\nexport default game;\n"
+        }
+    ]
+}

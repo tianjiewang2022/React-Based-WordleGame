@@ -1,0 +1,64 @@
+/* App.css */
+.app-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.app-title {
+    font-size: 2em;
+    color: #333;
+}
+
+.app-description {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-link {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.navigation-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #5ecce8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    position: relative;
+}
+
+.navigation-button:hover {
+    background-color: #2980b9;
+}
+
+.navigation-button:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    /* Use absolute positioning */
+    bottom: calc(100% + 5px);
+    /* Adjust the distance from the button */
+    left: 50%;
+    /* Center the tooltip horizontally */
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.navigation-button:hover::before {
+    opacity: 1;
+}

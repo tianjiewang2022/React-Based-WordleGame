@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/WordleProject/Pages/index.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1700012036235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1700012036235,
+            "name": "Commit-0",
+            "content": ".modal-overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.5);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.modal-content {\n    background: white;\n    padding: 20px;\n    border-radius: 8px;\n    position: relative;\n    width: 300px;\n    /* Adjust the width as needed */\n}\n\n.modal-close {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    cursor: pointer;\n}\n\n.modal-body {\n    margin-bottom: 20px;\n}\n\n.modal-action-bar {\n    display: flex;\n    justify-content: flex-end;\n}"
+        }
+    ]
+}

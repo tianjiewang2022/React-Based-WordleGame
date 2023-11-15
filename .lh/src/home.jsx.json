@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/home.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1699988363078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699988516495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,19 @@\n // Home.js\n import React from 'react';\n+import { Link } from 'react-router-dom';\n \n const Home = () => {\n-    return <div>Home Page</div>;\n+    return (\n+        <div>\n+            <h2>Home Page</h2>\n+            <Link to=\"/about\">\n+                <button>About</button>\n+            </Link>\n+            <Link to=\"/contact\">\n+                <button>Contact</button>\n+            </Link>\n+        </div>\n+    );\n };\n \n export default Home;\n"
+                },
+                {
+                    "date": 1699989726875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,17 +3,18 @@\n import { Link } from 'react-router-dom';\n \n const Home = () => {\n     return (\n-        <div>\n-            <h2>Home Page</h2>\n-            <Link to=\"/about\">\n-                <button>About</button>\n-            </Link>\n-            <Link to=\"/contact\">\n-                <button>Contact</button>\n-            </Link>\n-        </div>\n+        // <div>\n+        //     <h2>Home Page</h2>\n+        //     <Link to=\"/about\">\n+        //         <button>About</button>\n+        //     </Link>\n+        //     <Link to=\"/contact\">\n+        //         <button>Contact</button>\n+        //     </Link>\n+        // </div>\n+        return <div>About Page</div>;\n     );\n };\n \n export default Home;\n"
+                },
+                {
+                    "date": 1699989734640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,20 @@\n+// Home.js\n+import React from 'react';\n+import { Link } from 'react-router-dom';\n+\n+const Home = () => {\n+    return <div>About Page</div>;\n+    // return (\n+    //     <div>\n+    //         <h2>Home Page</h2>\n+    //         <Link to=\"/about\">\n+    //             <button>About</button>\n+    //         </Link>\n+    //         <Link to=\"/contact\">\n+    //             <button>Contact</button>\n+    //         </Link>\n+    //     </div>\n+    // );\n+};\n+\n+export default Home;\n"
+                },
+                {
+                    "date": 1699991383518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,42 @@\n+import React from 'react';\n+import Cell from './Cell';\n+import { GridProvider } from './Grid';\n+import Counter from './Counter'\n+import './App.css';\n+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';\n+// import Home from './Home';\n+// import About from './About';\n+// import Contact from './Contact';\n+// import NotFound from './NotFound';\n+\n+function App() {\n+  return (\n+    <GridProvider>\n+      <div>My App Page</div>\n+      <div className=\"app\">\n+        <div className=\"counter\">Counts: <Counter /></div>\n+        <div className=\"grid\">\n+          {/* {Array.from({ length: 2 }, (_, row) => ( */}\n+          {/* <div key={row} className=\"row\">\n+              {Array.from({ length: 2 }, (_, col) => (\n+                <Cell key={col} row={row} col={col} />\n+              ))}\n+            </div> */}\n+          {/* ))} */}\n+          {Array.from({ length: 4 }, (_, index) => (\n+            <Cell key={index} row={Math.floor(index / 2)} col={index % 2} />\n+          ))}\n+        </div>\n+      </div>\n+    </GridProvider>\n+    // <Router>\n+    //   <Switch>\n+    //     <Route path=\"/\" exact component={Home} />\n+    //     <Route path=\"/about\" component={About} />\n+    //     <Route path=\"/contact\" component={Contact} />\n+    //     <Route component={NotFound} />\n+    //   </Switch>\n+    // </Router>\n+  );\n+}\n+export default App;\n"
+                },
+                {
+                    "date": 1699991496646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\n import Cell from './Cell';\n import { GridProvider } from './Grid';\n import Counter from './Counter'\n-import './App.css';\n+import './Home.css';\n // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';\n // import Home from './Home';\n // import About from './About';\n // import Contact from './Contact';\n@@ -39,44 +39,4 @@\n     // </Router>\n   );\n }\n export default App;\n-// Home.js\n-import React from 'react';\n-import { Link } from 'react-router-dom';\n-\n-const Home = () => {\n-    return <div>About Page</div>;\n-    // return (\n-    //     <div>\n-    //         <h2>Home Page</h2>\n-    //         <Link to=\"/about\">\n-    //             <button>About</button>\n-    //         </Link>\n-    //         <Link to=\"/contact\">\n-    //             <button>Contact</button>\n-    //         </Link>\n-    //     </div>\n-    // );\n-};\n-\n-export default Home;\n-// Home.js\n-import React from 'react';\n-import { Link } from 'react-router-dom';\n-\n-const Home = () => {\n-    return (\n-        // <div>\n-        //     <h2>Home Page</h2>\n-        //     <Link to=\"/about\">\n-        //         <button>About</button>\n-        //     </Link>\n-        //     <Link to=\"/contact\">\n-        //         <button>Contact</button>\n-        //     </Link>\n-        // </div>\n-        return <div>About Page</div>;\n-    );\n-};\n-\n-export default Home;\n"
+                },
+                {
+                    "date": 1699991511556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,38 @@\n+import React from 'react';\n+import Cell from './Cell';\n+import { GridProvider } from './Grid';\n+import Counter from './Counter'\n+import './Home.css';\n+\n+\n+function App() {\n+  return (\n+    <GridProvider>\n+      <div>My App Page</div>\n+      <div className=\"app\">\n+        <div className=\"counter\">Counts: <Counter /></div>\n+        <div className=\"grid\">\n+          {/* {Array.from({ length: 2 }, (_, row) => ( */}\n+          {/* <div key={row} className=\"row\">\n+              {Array.from({ length: 2 }, (_, col) => (\n+                <Cell key={col} row={row} col={col} />\n+              ))}\n+            </div> */}\n+          {/* ))} */}\n+          {Array.from({ length: 4 }, (_, index) => (\n+            <Cell key={index} row={Math.floor(index / 2)} col={index % 2} />\n+          ))}\n+        </div>\n+      </div>\n+    </GridProvider>\n+    // <Router>\n+    //   <Switch>\n+    //     <Route path=\"/\" exact component={Home} />\n+    //     <Route path=\"/about\" component={About} />\n+    //     <Route path=\"/contact\" component={Contact} />\n+    //     <Route component={NotFound} />\n+    //   </Switch>\n+    // </Router>\n+  );\n+}\n+export default App;\n"
+                },
+                {
+                    "date": 1699991521543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,14 @@\n import Cell from './Cell';\n import { GridProvider } from './Grid';\n import Counter from './Counter'\n import './Home.css';\n+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';\n+// import Home from './Home';\n+// import About from './About';\n+// import Contact from './Contact';\n+// import NotFound from './NotFound';\n \n-\n function App() {\n   return (\n     <GridProvider>\n       <div>My App Page</div>\n@@ -24,15 +28,7 @@\n           ))}\n         </div>\n       </div>\n     </GridProvider>\n-    // <Router>\n-    //   <Switch>\n-    //     <Route path=\"/\" exact component={Home} />\n-    //     <Route path=\"/about\" component={About} />\n-    //     <Route path=\"/contact\" component={Contact} />\n-    //     <Route component={NotFound} />\n-    //   </Switch>\n-    // </Router>\n   );\n }\n export default App;\n"
+                },
+                {
+                    "date": 1699991527928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,11 +24,11 @@\n             </div> */}\n           {/* ))} */}\n           {Array.from({ length: 4 }, (_, index) => (\n             <Cell key={index} row={Math.floor(index / 2)} col={index % 2} />\n-      ))}\n-    </div>\n-  </div>\n-</GridProvider>\n-\n-\n-rt default App;\n+          ))}\n+        </div>\n+      </div>\n+    </GridProvider>\n+  );\n+}\n+export default App;\n"
+                },
+                {
+                    "date": 1699991535857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,8 @@\n import { GridProvider } from './Grid';\n import Counter from './Counter'\n import './Home.css';\n \n-\n function App() {\n   return (\n     <GridProvider>\n       <div>My App Page</div>\n"
+                }
+            ],
+            "date": 1699988363078,
+            "name": "Commit-0",
+            "content": "// Home.js\nimport React from 'react';\n\nconst Home = () => {\n    return <div>Home Page</div>;\n};\n\nexport default Home;\n"
+        }
+    ]
+}
