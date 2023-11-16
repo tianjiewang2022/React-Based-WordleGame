@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/WordleProject/useContext.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1700083689379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1700083689379,
+            "name": "Commit-0",
+            "content": "import { createContext, useContext, useState } from 'react';\n\nconst UserContext = createContext();\n\nexport const useUserContext = () => {\n    return useContext(UserContext);\n};\n\nexport const UserProvider = ({ children }) => {\n    const [users, setUsers] = useState({}); // Use an object to store users and their scores\n\n    const increaseScore = (username) => {\n        setUsers((prevUsers) => {\n            const updatedUsers = { ...prevUsers };\n            updatedUsers[username] = {\n                score: (updatedUsers[username]?.score || 0) + 1,\n            };\n            return updatedUsers;\n        });\n    };\n\n    const setUsername = (username) => {\n        setUsers((prevUsers) => {\n            const updatedUsers = { ...prevUsers };\n            if (!updatedUsers[username]) {\n                updatedUsers[username] = { score: 0 };\n            }\n            return updatedUsers;\n        });\n    };\n\n    return (\n        <UserContext.Provider value={{ users, setUsername, increaseScore }}>\n            {children}\n        </UserContext.Provider>\n    );\n};\n\n"
+        }
+    ]
+}

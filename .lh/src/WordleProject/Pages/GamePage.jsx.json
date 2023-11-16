@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1699999459616,
@@ -28,6 +28,14 @@
                 {
                     "date": 1700001141622,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,5 +29,5 @@\n         </div >\n     );\n }\n \n-export default GamePage;\n+export default Normal;\n"
+                },
+                {
+                    "date": 1700082781506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import Modal from \"../Components/Modal\";\n import { useState } from \"react\";\n import { Link } from 'react-router-dom';\n-import { UserProvider } from '../Components/useContext';\n+import { UserProvider } from '../useContext';\n \n \n function GamePage() {\n     const [showModal, setShowModal] = useState(false);\n"
+                },
+                {
+                    "date": 1700083774781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,14 @@\n \n                 <h2 className=\"app-title\">Welcome to Wordle Game!</h2>\n                 <p className=\"app-description\">Click the buttons to choose difficulty ʕ •ᴥ•ʔ</p>\n                 <div className=\"button-container\">\n+                <Link\n+                        to=\"./Normal\"\n+                        className=\"navigation-link\"\n+                    >\n+                        <button className=\"navigation-button\">Normal</button>\n+                    </Link>\n                     <Link\n                         to=\"./Normal\"\n                         className=\"navigation-link\"\n                     >\n"
                 }
             ],
             "date": 1699999459616,

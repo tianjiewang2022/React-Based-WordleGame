@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1700001151732,
@@ -60,6 +60,10 @@
                 {
                     "date": 1700019109166,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-import React from 'react';\n import Game from '../Components/game';\n \n const Hard = () => {\n     return (\n"
+                },
+                {
+                    "date": 1700081129228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,10 @@\n+import Game from '../Components/gameContainer';\n+\n+const Hard = () => {\n+    return (\n+        < div >\n+            <Game words={['curious', 'glimpse', 'hydrate', 'observe', 'protest', 'vintage', 'analyze', 'justice', 'whisper', 'capture']} wordLength={7} attemptLimit={5} />\n+        </div>\n+    );\n+}\n+export default Hard;\n"
                 }
             ],
             "date": 1700001151732,

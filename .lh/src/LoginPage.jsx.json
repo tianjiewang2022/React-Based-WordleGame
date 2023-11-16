@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/LoginPage.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1700094622215,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1700094622215,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react';\nimport { useUserContext } from '../src/useContext';\n\n\n\nconst LoginPage = () => {\n\n    const { setUsername } = useUserContext();\n    const [inputUsername, setInputUsername] = useState('');\n\n    const handleLogin = () => {\n        setUsername(inputUsername);\n        setInputUsername('');\n    };\n\n    return (\n        <div>\n            <h1>Login Page</h1>\n            <label>\n                Username:\n                <input\n                    type=\"text\"\n                    value={inputUsername}\n                    onChange={(e) => setInputUsername(e.target.value)}\n                />\n            </label>\n            <button onClick={handleLogin}>Login</button>\n        </div>\n    );\n\n};\n\nexport default LoginPage;\n"
+        }
+    ]
+}

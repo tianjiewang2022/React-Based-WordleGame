@@ -1,4 +1,4 @@
-import Game from '../Components/game';
+import Game from '../Components/gameContainer';
 
 const Hard = () => {
     return (

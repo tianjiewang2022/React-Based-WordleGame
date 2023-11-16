@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/WordleProject/Components/gameContainer.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1700081117165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700081235173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // GameContainer.js\n import React, { useState, useEffect } from 'react';\n-// import Game from './Game';\n+import Game from './renderGamePage';\n \n const GameContainer = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n"
+                },
+                {
+                    "date": 1700081327860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // GameContainer.js\n import React, { useState, useEffect } from 'react';\n-import Game from './renderGamePage';\n+import renderGamePage from './renderGamePage';\n \n const GameContainer = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n"
+                },
+                {
+                    "date": 1700081348313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,9 +70,9 @@\n         }\n     };\n \n     return (\n-        <Game\n+        <renderGamePage\n             userInput={userInput}\n             feedback={feedback}\n             attempts={attempts}\n             showCongratulations={showCongratulations}\n"
+                },
+                {
+                    "date": 1700081519376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // GameContainer.js\n import React, { useState, useEffect } from 'react';\n-import renderGamePage from './renderGamePage';\n+import Game from './renderGamePage';\n \n const GameContainer = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n@@ -70,9 +70,9 @@\n         }\n     };\n \n     return (\n-        <renderGamePage\n+        <Game\n             userInput={userInput}\n             feedback={feedback}\n             attempts={attempts}\n             showCongratulations={showCongratulations}\n"
+                },
+                {
+                    "date": 1700081603556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n // GameContainer.js\n import React, { useState, useEffect } from 'react';\n import Game from './renderGamePage';\n \n+// eslint-disable-next-line react/prop-types\n const GameContainer = ({ words, wordLength, attemptLimit }) => {\n     const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n     const [selectedWord, setSelectedWord] = useState('');\n     const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n"
+                },
+                {
+                    "date": 1700101333330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n     const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n     const [attempts, setAttempts] = useState(0);\n     const [showCongratulations, setShowCongratulations] = useState(false);\n     const [errorMessage, setErrorMessage] = useState('');\n+    import { useUserContext } from './Login/useContext';\n \n     useEffect(() => {\n         resetGame();\n     }, []); // Initial reset when the component mounts\n"
+                },
+                {
+                    "date": 1700101346985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n     const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n     const [attempts, setAttempts] = useState(0);\n     const [showCongratulations, setShowCongratulations] = useState(false);\n     const [errorMessage, setErrorMessage] = useState('');\n+    const { setScore } = useUserContext();\n \n \n     useEffect(() => {\n         resetGame();\n"
+                },
+                {
+                    "date": 1700101373452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,8 +70,9 @@\n         setFeedback(newFeedback);\n \n         if (word === selectedWord && attempts < attemptLimit) {\n             setShowCongratulations(true);\n+            setScore((prevScore) => prevScore + 1);\n         }\n     };\n \n     return (\n"
+                }
+            ],
+            "date": 1700081117165,
+            "name": "Commit-0",
+            "content": "// GameContainer.js\nimport React, { useState, useEffect } from 'react';\n// import Game from './Game';\n\nconst GameContainer = ({ words, wordLength, attemptLimit }) => {\n    const [userInput, setUserInput] = useState(Array(wordLength).fill(''));\n    const [selectedWord, setSelectedWord] = useState('');\n    const [feedback, setFeedback] = useState(Array(wordLength).fill(''));\n    const [attempts, setAttempts] = useState(0);\n    const [showCongratulations, setShowCongratulations] = useState(false);\n    const [errorMessage, setErrorMessage] = useState('');\n\n    useEffect(() => {\n        resetGame();\n    }, []); // Initial reset when the component mounts\n\n    useEffect(() => {\n        if (attempts > attemptLimit) {\n            resetGame();\n        }\n    }, [attempts]);\n\n    useEffect(() => {\n        const randomIndex = Math.floor(Math.random() * words.length);\n        setSelectedWord(words[randomIndex]);\n    }, []);\n\n    const resetGame = () => {\n        const randomIndex = Math.floor(Math.random() * words.length);\n        setSelectedWord(words[randomIndex]);\n        setUserInput(Array(wordLength).fill(''));\n        setFeedback(Array(wordLength).fill(''));\n        setAttempts(0);\n        setShowCongratulations(false);\n        setErrorMessage('');\n    };\n\n    const handleInputChange = (index, value) => {\n        const newInput = [...userInput];\n        newInput[index] = value;\n        setUserInput(newInput);\n    };\n\n    const submitWord = () => {\n        const word = userInput.join('').toLowerCase();\n        setAttempts(attempts + 1);\n        // Validate the length of the submitted word\n        if (word.length < wordLength) {\n            setErrorMessage(`The word you inputted is too short. Please input ${wordLength} characters.`);\n            return;\n        }\n\n        // Clear the error message if there was one\n        setErrorMessage('');\n\n        const newFeedback = word.split('').map((char, index) => {\n            if (!selectedWord.includes(char)) {\n                return 'gray';\n            } else if (selectedWord[index] !== char) {\n                return 'yellow';\n            } else {\n                return 'green';\n            }\n        });\n\n        setFeedback(newFeedback);\n\n        if (word === selectedWord && attempts < attemptLimit) {\n            setShowCongratulations(true);\n        }\n    };\n\n    return (\n        <Game\n            userInput={userInput}\n            feedback={feedback}\n            attempts={attempts}\n            showCongratulations={showCongratulations}\n            errorMessage={errorMessage}\n            onInputChange={handleInputChange}\n            onSubmitWord={submitWord}\n            onResetGame={resetGame}\n            remainingAttempts={attemptLimit - attempts}\n            selectedWord={selectedWord}\n        />\n    );\n};\n\nexport default GameContainer;\n"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/WordleProject/Pages/LoginPage.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1700083708204,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700083885808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-import React, { useState } from 'react';\n-import { useUserContext } from '../../UserContext';\n+import { useState } from 'react';\n+import { useUserContext } from '../useContext';\n \n const LoginPage = () => {\n     const { setUsername } = useUserContext();\n     const [inputUsername, setInputUsername] = useState('');\n"
+                },
+                {
+                    "date": 1700084081213,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,28 +1,29 @@\n import { useState } from 'react';\n import { useUserContext } from '../useContext';\n \n const LoginPage = () => {\n-    const { setUsername } = useUserContext();\n-    const [inputUsername, setInputUsername] = useState('');\n+    return <h1>Login Page</h1>;\n+    // const { setUsername } = useUserContext();\n+    // const [inputUsername, setInputUsername] = useState('');\n \n-    const handleLogin = () => {\n-        setUsername(inputUsername);\n-    };\n+    // const handleLogin = () => {\n+    //     setUsername(inputUsername);\n+    // };\n \n-    return (\n-        <div>\n-            <h1>Login Page</h1>\n-            <label>\n-                Username:\n-                <input\n-                    type=\"text\"\n-                    value={inputUsername}\n-                    onChange={(e) => setInputUsername(e.target.value)}\n-                />\n-            </label>\n-            <button onClick={handleLogin}>Login</button>\n-        </div>\n-    );\n+    // return (\n+    //     <div>\n+    //         <h1>Login Page</h1>\n+    //         <label>\n+    //             Username:\n+    //             <input\n+    //                 type=\"text\"\n+    //                 value={inputUsername}\n+    //                 onChange={(e) => setInputUsername(e.target.value)}\n+    //             />\n+    //         </label>\n+    //         <button onClick={handleLogin}>Login</button>\n+    //     </div>\n+    // );\n };\n \n export default LoginPage;\n"
+                },
+                {
+                    "date": 1700084158251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,17 @@\n-import { useState } from 'react';\n-import { useUserContext } from '../useContext';\n+// import { useState } from 'react';\n+// import { useUserContext } from '../useContext';\n \n-const LoginPage = () => {\n-    return <h1>Login Page</h1>;\n+import Game from '../Components/gameContainer';\n+\n+const Normal = () => {\n+    return (\n+        < div >\n+            <Game words={['random', 'banana', 'yellow', 'jacket', 'purple', 'turtle', 'guitar', 'window', 'hidden', 'planet']} wordLength={6} attemptLimit={6} />\n+        </div>\n+    );\n+}\n+export default Normal;\n     // const { setUsername } = useUserContext();\n     // const [inputUsername, setInputUsername] = useState('');\n \n     // const handleLogin = () => {\n"
+                },
+                {
+                    "date": 1700084168299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,7 +31,7 @@\n     //         </label>\n     //         <button onClick={handleLogin}>Login</button>\n     //     </div>\n     // );\n-};\n+// };\n \n-export default LoginPage;\n+// export default LoginPage;\n"
+                },
+                {
+                    "date": 1700084183312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,12 @@\n // import { useState } from 'react';\n // import { useUserContext } from '../useContext';\n \n-import Game from '../Components/gameContainer';\n+const LoginPage = () => {\n+    return <h1>Login Page</h1>;\n+};\n \n-const Normal = () => {\n-    return (\n-        < div >\n-            <Game words={['random', 'banana', 'yellow', 'jacket', 'purple', 'turtle', 'guitar', 'window', 'hidden', 'planet']} wordLength={6} attemptLimit={6} />\n-        </div>\n-    );\n-}\n-export default Normal;\n+export default LoginPage;\n // const { setUsername } = useUserContext();\n // const [inputUsername, setInputUsername] = useState('');\n \n // const handleLogin = () => {\n@@ -31,7 +26,5 @@\n //         </label>\n //         <button onClick={handleLogin}>Login</button>\n //     </div>\n // );\n-// };\n \n-// export default LoginPage;\n"
+                },
+                {
+                    "date": 1700084251992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+// import { useState } from 'react';\n+// import { useUserContext } from '../useContext';\n+\n+const LoginPage = () => {\n+    return <h1>Login Page</h1>;\n+};\n+\n+export default LoginPage;\n+// const { setUsername } = useUserContext();\n+// const [inputUsername, setInputUsername] = useState('');\n+\n+// const handleLogin = () => {\n+//     setUsername(inputUsername);\n+// };\n+\n+// return (\n+//     <div>\n+//         <h1>Login Page</h1>\n+//         <label>\n+//             Username:\n+//             <input\n+//                 type=\"text\"\n+//                 value={inputUsername}\n+//                 onChange={(e) => setInputUsername(e.target.value)}\n+//             />\n+//         </label>\n+//         <button onClick={handleLogin}>Login</button>\n+//     </div>\n+// );\n+\n"
+                }
+            ],
+            "date": 1700083708204,
+            "name": "Commit-0",
+            "content": "import React, { useState } from 'react';\nimport { useUserContext } from '../../UserContext';\n\nconst LoginPage = () => {\n    const { setUsername } = useUserContext();\n    const [inputUsername, setInputUsername] = useState('');\n\n    const handleLogin = () => {\n        setUsername(inputUsername);\n    };\n\n    return (\n        <div>\n            <h1>Login Page</h1>\n            <label>\n                Username:\n                <input\n                    type=\"text\"\n                    value={inputUsername}\n                    onChange={(e) => setInputUsername(e.target.value)}\n                />\n            </label>\n            <button onClick={handleLogin}>Login</button>\n        </div>\n    );\n};\n\nexport default LoginPage;\n"
+        }
+    ]
+}

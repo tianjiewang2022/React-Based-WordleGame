@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/WordleProject/Pages/UserLogin.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1700082887948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700082901435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,22 +2,22 @@\n \n const UserContext = createContext();\n \n export const useUserContext = () => {\n-  return useContext(UserContext);\n+    return useContext(UserContext);\n };\n \n export const UserProvider = ({ children }) => {\n-  const [username, setUsername] = useState('');\n-  const [score, setScore] = useState(0);\n+    const [username, setUsername] = useState('');\n+    const [score, setScore] = useState(0);\n \n-  const increaseScore = () => {\n-    setScore(score + 1);\n-  };\n+    const increaseScore = () => {\n+        setScore(score + 1);\n+    };\n \n-  return (\n-    <UserContext.Provider value={{ username, setUsername, score, increaseScore }}>\n-      {children}\n-    </UserContext.Provider>\n-  );\n+    return (\n+        <UserContext.Provider value={{ username, setUsername, score, increaseScore }}>\n+            {children}\n+        </UserContext.Provider>\n+    );\n };\n \n"
+                }
+            ],
+            "date": 1700082887948,
+            "name": "Commit-0",
+            "content": "import { createContext, useContext, useState } from 'react';\n\nconst UserContext = createContext();\n\nexport const useUserContext = () => {\n  return useContext(UserContext);\n};\n\nexport const UserProvider = ({ children }) => {\n  const [username, setUsername] = useState('');\n  const [score, setScore] = useState(0);\n\n  const increaseScore = () => {\n    setScore(score + 1);\n  };\n\n  return (\n    <UserContext.Provider value={{ username, setUsername, score, increaseScore }}>\n      {children}\n    </UserContext.Provider>\n  );\n};\n\n"
+        }
+    ]
+}

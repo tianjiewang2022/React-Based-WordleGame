@@ -9,6 +9,7 @@ const Game = ({ words, wordLength, attemptLimit }) => {
     const [feedback, setFeedback] = useState(Array(wordLength).fill(''));
     const [attempts, setAttempts] = useState(0);
     const [showCongratulations, setShowCongratulations] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         resetGame();
@@ -16,7 +17,6 @@ const Game = ({ words, wordLength, attemptLimit }) => {
 
     useEffect(() => {
         if (attempts > attemptLimit) {
-            alert('Game Over! Would you like to reset the game?');
             resetGame();
         }
     }, [attempts]);
@@ -33,6 +33,7 @@ const Game = ({ words, wordLength, attemptLimit }) => {
         setFeedback(Array(wordLength).fill(''));
         setAttempts(0);
         setShowCongratulations(false);
+        setErrorMessage('');
     };
 
     const handleInputChange = (index, value) => {
@@ -44,13 +45,18 @@ const Game = ({ words, wordLength, attemptLimit }) => {
     const submitWord = () => {
         const word = userInput.join('').toLowerCase();
         setAttempts(attempts + 1);
-        if (word.length < wordLength) {
-            alert(`Word is too short. Please submit a ${wordLength}-letter word.`);
-            return;
-        }
         console.log('Submitted Word:', word);
         console.log('Selected Word:', selectedWord);
         console.log(attempts);
+        // Validate the length of the submitted word
+        if (word.length < wordLength) {
+            setErrorMessage(`The word you inputted is too short. Please input ${wordLength} characters.`);
+            return;
+        }
+
+
+        // Clear the error message if there was one
+        setErrorMessage('');
 
 
         const newFeedback = word.split('').map((char, index) => {
@@ -111,11 +117,22 @@ const Game = ({ words, wordLength, attemptLimit }) => {
                     </>
                 )}
             </div>
+            {/* Display the error message */}
+            {errorMessage && (
+                <div style={{ color: 'red', marginBottom: '20px' }}>
+                    {errorMessage}
+                </div>
+            )}
 
             {attempts >= attemptLimit && (
-                <p>
-                    Game Over! The correct answer was: <strong>{selectedWord}</strong>
-                </p>
+                <div>
+                    <p>
+                        Game Over! The correct answer was: <strong>{selectedWord}</strong>
+                    </p>
+                    <button className="navigation-button" onClick={resetGame}>
+                        Try Again
+                    </button>
+                </div>
             )}
         </div>
     );

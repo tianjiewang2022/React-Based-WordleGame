@@ -1,0 +1,66 @@
+{
+    "sourceFile": "src/Login/LoginPage.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1700094959163,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700095015387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { useState } from 'react';\n-import { useUserContext } from '../useContext';\n+import { useUserContext } from './useContext';\n \n \n \n const LoginPage = () => {\n"
+                },
+                {
+                    "date": 1700095716524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import { useState } from 'react';\n import { useUserContext } from './useContext';\n+import { Link } from 'react-router-dom';\n \n \n \n const LoginPage = () => {\n"
+                },
+                {
+                    "date": 1700095848305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import { useState } from 'react';\n import { useUserContext } from './useContext';\n-import { Link } from 'react-router-dom';\n \n \n \n const LoginPage = () => {\n"
+                },
+                {
+                    "date": 1700095854889,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,34 @@\n+import { useState } from 'react';\n+import { useUserContext } from './useContext';\n+import { Link } from 'react-router-dom';\n+\n+\n+\n+const LoginPage = () => {\n+\n+    const { setUsername } = useUserContext();\n+    const [inputUsername, setInputUsername] = useState('');\n+\n+    const handleLogin = () => {\n+        setUsername(inputUsername);\n+        setInputUsername('');\n+    };\n+\n+    return (\n+        <div>\n+            <h1>Login Page</h1>\n+            <label>\n+                Username:\n+                <input\n+                    type=\"text\"\n+                    value={inputUsername}\n+                    onChange={(e) => setInputUsername(e.target.value)}\n+                />\n+            </label>\n+            <button onClick={handleLogin}>Login</button>\n+        </div>\n+    );\n+\n+};\n+\n+export default LoginPage;\n"
+                },
+                {
+                    "date": 1700095969087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,24 @@\n-import { useState } from 'react';\n+import React, { useState } from 'react';\n import { useUserContext } from './useContext';\n-import { Link } from 'react-router-dom';\n+import { Link, useHistory } from 'react-router-dom';\n \n-\n-\n const LoginPage = () => {\n-\n+    const history = useHistory();\n     const { setUsername } = useUserContext();\n     const [inputUsername, setInputUsername] = useState('');\n+    const [error, setError] = useState('');\n \n     const handleLogin = () => {\n-        setUsername(inputUsername);\n-        setInputUsername('');\n+        if (inputUsername.trim() === '') {\n+            setError('Invalid username');\n+        } else {\n+            setUsername(inputUsername);\n+            setInputUsername('');\n+            setError('');\n+            // Navigate to another page, you can replace '/dashboard' with the desired route\n+            history.push('/dashboard');\n+        }\n     };\n \n     return (\n         <div>\n@@ -25,10 +31,48 @@\n                     onChange={(e) => setInputUsername(e.target.value)}\n                 />\n             </label>\n             <button onClick={handleLogin}>Login</button>\n+            {error && <p style={{ color: 'red' }}>{error}</p>}\n         </div>\n     );\n-\n };\n \n export default LoginPage;\n+\n+\n+\n+\n+// import { useState } from 'react';\n+// import { useUserContext } from './useContext';\n+// import { Link } from 'react-router-dom';\n+\n+\n+\n+// const LoginPage = () => {\n+\n+//     const { setUsername } = useUserContext();\n+//     const [inputUsername, setInputUsername] = useState('');\n+\n+//     const handleLogin = () => {\n+//         setUsername(inputUsername);\n+//         setInputUsername('');\n+//     };\n+\n+//     return (\n+//         <div>\n+//             <h1>Login Page</h1>\n+//             <label>\n+//                 Username:\n+//                 <input\n+//                     type=\"text\"\n+//                     value={inputUsername}\n+//                     onChange={(e) => setInputUsername(e.target.value)}\n+//                 />\n+//             </label>\n+//             <button onClick={handleLogin}>Login</button>\n+//         </div>\n+//     );\n+\n+// };\n+\n+// export default LoginPage;\n"
+                },
+                {
+                    "date": 1700096015449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import React, { useState } from 'react';\n import { useUserContext } from './useContext';\n import { Link, useHistory } from 'react-router-dom';\n+import App from '../App';\n \n const LoginPage = () => {\n     const history = useHistory();\n     const { setUsername } = useUserContext();\n@@ -15,9 +16,9 @@\n             setUsername(inputUsername);\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n-            history.push('/dashboard');\n+            history.push('../');\n         }\n     };\n \n     return (\n@@ -75,37 +76,4 @@\n \n // };\n \n // export default LoginPage;\n-import { useState } from 'react';\n-import { useUserContext } from './useContext';\n-\n-\n-\n-const LoginPage = () => {\n-\n-    const { setUsername } = useUserContext();\n-    const [inputUsername, setInputUsername] = useState('');\n-\n-    const handleLogin = () => {\n-        setUsername(inputUsername);\n-        setInputUsername('');\n-    };\n-\n-    return (\n-        <div>\n-            <h1>Login Page</h1>\n-            <label>\n-                Username:\n-                <input\n-                    type=\"text\"\n-                    value={inputUsername}\n-                    onChange={(e) => setInputUsername(e.target.value)}\n-                />\n-            </label>\n-            <button onClick={handleLogin}>Login</button>\n-        </div>\n-    );\n-\n-};\n-\n-export default LoginPage;\n"
+                },
+                {
+                    "date": 1700096020640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             setUsername(inputUsername);\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n-            history.push('../');\n+            history.push(App);\n         }\n     };\n \n     return (\n"
+                },
+                {
+                    "date": 1700096061654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             setUsername(inputUsername);\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n-            history.push(App);\n+            history.push({ App });\n         }\n     };\n \n     return (\n"
+                },
+                {
+                    "date": 1700096076830,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             setUsername(inputUsername);\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n-            history.push({ App });\n+            history.push('../App');\n         }\n     };\n \n     return (\n"
+                },
+                {
+                    "date": 1700096112090,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,14 @@\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n             history.push('../App');\n+            <Link\n+                        to=\"./Normal\"\n+                        className=\"navigation-link\"\n+                    >\n+                        <button className=\"navigation-button\">Normal</button>\n+                    </Link>\n         }\n     };\n \n     return (\n"
+                },
+                {
+                    "date": 1700096131613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n             // history.push('../App');\n             <Link\n-                to=\"./Normal\"\n+                to=\"/\"\n                 className=\"navigation-link\"\n             >\n                 <button className=\"navigation-button\">Normal</button>\n             </Link>\n"
+                },
+                {
+                    "date": 1700096153884,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,14 +17,9 @@\n             setInputUsername('');\n             setError('');\n             // Navigate to another page, you can replace '/dashboard' with the desired route\n             // history.push('../App');\n-            <Link\n-                to=\"/\"\n-                className=\"navigation-link\"\n-            >\n-                <button className=\"navigation-button\">Normal</button>\n-            </Link>\n+            \n         }\n     };\n \n     return (\n"
+                }
+            ],
+            "date": 1700094959163,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react';\nimport { useUserContext } from '../useContext';\n\n\n\nconst LoginPage = () => {\n\n    const { setUsername } = useUserContext();\n    const [inputUsername, setInputUsername] = useState('');\n\n    const handleLogin = () => {\n        setUsername(inputUsername);\n        setInputUsername('');\n    };\n\n    return (\n        <div>\n            <h1>Login Page</h1>\n            <label>\n                Username:\n                <input\n                    type=\"text\"\n                    value={inputUsername}\n                    onChange={(e) => setInputUsername(e.target.value)}\n                />\n            </label>\n            <button onClick={handleLogin}>Login</button>\n        </div>\n    );\n\n};\n\nexport default LoginPage;\n"
+        }
+    ]
+}

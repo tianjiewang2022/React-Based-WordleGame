@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/WordleProject/Components/game.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1700080276379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700080298061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n .word-input {\n     display: flex;\n     gap: 10px;\n+    margin-top: 40px;\n }\n \n .word-input input {\n     width: 30px;\n"
+                },
+                {
+                    "date": 1700081720763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n .button-container {\n     display: flex;\n     gap: 10px;\n     margin-top: 40px;\n-    margin-bottom: 40px;\n+    margin-bottom: 20px;\n }\n \n .center-container {\n     display: flex;\n"
+                },
+                {
+                    "date": 1700081732950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n .button-container {\n     display: flex;\n     gap: 10px;\n     margin-top: 40px;\n-    margin-bottom: 20px;\n+    margin-bottom: 30px;\n }\n \n .center-container {\n     display: flex;\n"
+                }
+            ],
+            "date": 1700080276379,
+            "name": "Commit-0",
+            "content": ".word-input {\n    display: flex;\n    gap: 10px;\n}\n\n.word-input input {\n    width: 30px;\n    /* Set the width of the input boxes */\n    height: 30px;\n    /* Set the height of the input boxes */\n}\n\n.button-container {\n    display: flex;\n    gap: 10px;\n    margin-top: 40px;\n    margin-bottom: 40px;\n}\n\n.center-container {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 100vh;\n    /* Center the content vertically */\n}\n\n.input-block {\n    display: inline-block;\n    width: 30px;\n    height: 30px;\n    border: 1px solid #ccc;\n    text-align: center;\n    line-height: 30px;\n    margin-right: 5px;\n}\n\n.gray {\n    background-color: gray;\n}\n\n.yellow {\n    background-color: yellow;\n}\n\n.green {\n    background-color: green;\n}"
+        }
+    ]
+}

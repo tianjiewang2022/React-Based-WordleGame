@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/Login/useContext.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1700100148543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1700100175189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     return useContext(UserContext);\n };\n \n export const UserProvider = ({ children }) => {\n-    const [users, setUsers] = useState(''); // Use an object to store users and their scores\n+    const [users, setUsers] = useState('');\n \n     const increaseScore = (username) => {\n         setUsers((prevUsers) => {\n             const updatedUsers = { ...prevUsers };\n@@ -29,9 +29,9 @@\n         });\n     };\n \n     return (\n-        <UserContext.Provider value={{ users, setUsername, increaseScore }}>\n+        <UserContext.Provider value={{ users, setUsername }}>\n             {children}\n         </UserContext.Provider>\n     );\n };\n"
+                },
+                {
+                    "date": 1700100184579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,17 +8,17 @@\n \n export const UserProvider = ({ children }) => {\n     const [users, setUsers] = useState('');\n \n-    const increaseScore = (username) => {\n-        setUsers((prevUsers) => {\n-            const updatedUsers = { ...prevUsers };\n-            updatedUsers[username] = {\n-                score: (updatedUsers[username]?.score || 0) + 1,\n-            };\n-            return updatedUsers;\n-        });\n-    };\n+    // const increaseScore = (username) => {\n+    //     setUsers((prevUsers) => {\n+    //         const updatedUsers = { ...prevUsers };\n+    //         updatedUsers[username] = {\n+    //             score: (updatedUsers[username]?.score || 0) + 1,\n+    //         };\n+    //         return updatedUsers;\n+    //     });\n+    // };\n \n     const setUsername = (username) => {\n         setUsers((prevUsers) => {\n             const updatedUsers = { ...prevUsers };\n"
+                },
+                {
+                    "date": 1700100202113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,21 +18,19 @@\n     //         return updatedUsers;\n     //     });\n     // };\n \n-    const setUsername = (username) => {\n-        setUsers((prevUsers) => {\n-            const updatedUsers = { ...prevUsers };\n-            if (!updatedUsers[username]) {\n-                updatedUsers[username] = { score: 0 };\n-            }\n-            return updatedUsers;\n-        });\n+    const useUserContext = () => {\n+        const context = useContext(UserContext);\n+        if (!context) {\n+            throw new Error('useUserContext must be used within a UserProvider');\n+        }\n+        return context;\n+\n+\n+        return (\n+            <UserContext.Provider value={{ users, setUsername }}>\n+                {children}\n+            </UserContext.Provider>\n+        );\n     };\n \n-    return (\n-        <UserContext.Provider value={{ users, setUsername }}>\n-            {children}\n-        </UserContext.Provider>\n-    );\n-};\n-\n"
+                },
+                {
+                    "date": 1700100208191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,10 +24,10 @@\n         if (!context) {\n             throw new Error('useUserContext must be used within a UserProvider');\n         }\n         return context;\n+    }\n \n-\n         return (\n             <UserContext.Provider value={{ users, setUsername }}>\n                 {children}\n             </UserContext.Provider>\n"
+                },
+                {
+                    "date": 1700100225952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,5 +32,6 @@\n             {children}\n         </UserContext.Provider>\n     );\n };\n+export { UserProvider, useUserContext };\n \n"
+                },
+                {
+                    "date": 1700100237459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n export const useUserContext = () => {\n     return useContext(UserContext);\n };\n \n-export const UserProvider = ({ children }) => {\n+const UserProvider = ({ children }) => {\n     const [users, setUsers] = useState('');\n \n     // const increaseScore = (username) => {\n     //     setUsers((prevUsers) => {\n"
+                }
+            ],
+            "date": 1700100148543,
+            "name": "Commit-0",
+            "content": "import { createContext, useContext, useState } from 'react';\n\nconst UserContext = createContext();\n\nexport const useUserContext = () => {\n    return useContext(UserContext);\n};\n\nexport const UserProvider = ({ children }) => {\n    const [users, setUsers] = useState(''); // Use an object to store users and their scores\n\n    const increaseScore = (username) => {\n        setUsers((prevUsers) => {\n            const updatedUsers = { ...prevUsers };\n            updatedUsers[username] = {\n                score: (updatedUsers[username]?.score || 0) + 1,\n            };\n            return updatedUsers;\n        });\n    };\n\n    const setUsername = (username) => {\n        setUsers((prevUsers) => {\n            const updatedUsers = { ...prevUsers };\n            if (!updatedUsers[username]) {\n                updatedUsers[username] = { score: 0 };\n            }\n            return updatedUsers;\n        });\n    };\n\n    return (\n        <UserContext.Provider value={{ users, setUsername, increaseScore }}>\n            {children}\n        </UserContext.Provider>\n    );\n};\n\n"
+        }
+    ]
+}

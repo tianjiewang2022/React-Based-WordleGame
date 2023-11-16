@@ -6,9 +6,11 @@ import {
 } from "react-router-dom";
 import App from './App'
 import ClickProject from "./ClickProject/App";
-import WordleProject from './WordleProject/Pages/App';
+import WordleProject from './WordleProject/Pages/GamePage';
 import Normal from './WordleProject/Pages/Normal';
 import Hard from './WordleProject/Pages/Hard';
+import LoginPage from "./Login/LoginPage";
+import { UserProvider } from './Login/useContext';
 
 const router = createBrowserRouter([
   {
@@ -30,11 +32,17 @@ const router = createBrowserRouter([
   {
     path: "/WordleProject/Hard",
     element: <Hard />,
+  },
+  {
+    path: "/LoginPage",
+    element: <LoginPage />,
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );
