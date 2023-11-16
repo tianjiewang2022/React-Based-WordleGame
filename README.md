@@ -4,7 +4,7 @@ open the web page by `npm run dev`
 
 please watch the demo video for the project from file `React HW Demo - React.mp4`
 
-In this assignment: 
+## The project requirements and bonus points I implemented In this assignment: 
 1. Had 4+ different React components
 2. One of those components receive props from a parent component
 3. Added nested components
